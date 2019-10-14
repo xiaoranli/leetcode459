@@ -1,6 +1,6 @@
 4、leetcode459. 重复的子字符串
 ==
-解法一：水平扫描  
+解法一：
 --
 思路：
 --
@@ -44,7 +44,7 @@ public class RepeatedSubstringPattern_459 {
     }
 }
 </pre>
-解法二：水平扫描  
+解法二： 
 --
 代码： 
 --
@@ -82,7 +82,7 @@ public class RepeatedSubstringPattern_459 {
     }
 }
 </pre>
-解法三：水平扫描  
+解法三：  
 --   
 代码： 
 --
