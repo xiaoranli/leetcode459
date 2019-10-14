@@ -44,3 +44,74 @@ public class RepeatedSubstringPattern_459 {
     }
 }
 </pre>
+解法二：水平扫描  
+--
+代码： 
+--
+<pre>
+/**
+ * @author lihe
+ * @date 2019/10/14 14:58
+ * @descriptor  459. 重复的子字符串
+ */
+public class RepeatedSubstringPattern_459 {
+    //利用StringAPI，如果全是重复的子字符串，那么使用split函数拆分后的数组长度将会是0
+    //找字符串长度的因子，挨个去拆分出子串，去测试满足split函数拆分的数组长度是否为0
+    //split函数使用的规则是正则匹配，效率略低
+    public static boolean repeatedSubstringPattern(String s) {
+        // 判断鲁棒性
+        if (s == null || s.length() < 2)
+            return false;
+        // 长度大于1，可以拆分出子串，判断字符串中是否所有字符都相同，如"aaaaaa","zzz"，一定满足按子串长度为1的拆分，所以直接返回true
+        if(s.split(String.valueOf(s.charAt(0))).length == 0)
+            return true;
+        for (int i = s.length()/2; i > 1; i--) {
+            if(s.length() % i == 0){
+                String substring = s.substring(0, i);
+                String[] split = s.split(substring);
+                if(split.length == 0)
+                    return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        String s = "abcabcabc";
+        boolean b = repeatedSubstringPattern3(s);
+        System.out.println(b);
+    }
+}
+</pre>
+解法三：水平扫描  
+--   
+代码： 
+--
+<pre>
+/**
+ * @author lihe
+ * @date 2019/10/14 14:58
+ * @descriptor  459. 重复的子字符串
+ */
+public class RepeatedSubstringPattern_459 {
+    //1.将原字符串给出拷贝一遍组成新字符串；
+    //2.掐头去尾留中间；
+    //3.如果还包含原字符串，则满足题意。
+    public static boolean repeatedSubstringPattern3(String s) {
+        String strings = s + s;
+        String substring = strings.substring(1, strings.length() - 1);
+        if(substring.contains(s))
+            return true;
+        else
+            return false;
+    }
+
+    public static void main(String[] args) {
+        String s = "abcabcabc";
+        boolean b = repeatedSubstringPattern3(s);
+        System.out.println(b);
+    }
+}
+</pre>
+
+
+
